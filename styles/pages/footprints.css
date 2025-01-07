@@ -1,0 +1,1029 @@
+/* 足迹页面样式 */
+.footprints-page {
+    min-height: 100vh;
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 顶部地图区域 */
+.map-section {
+    padding: 2rem;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.05),
+        rgba(255, 255, 255, 0.02)
+    );
+}
+
+.map-container {
+    display: flex;
+    gap: 2rem;
+    max-width: min(90vw, 2000px);
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.map-wrapper {
+    flex: 0 0 65%;
+    position: relative;
+    height: 400px;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.map-stats {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    display: flex;
+    gap: 2rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* 右侧旅行感想 */
+.travel-insights {
+    flex: 1;
+    min-width: 300px;
+}
+
+.insights-card {
+    height: 100%;
+    padding: 2rem;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.insights-header h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.travel-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.stat-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--text-secondary);
+}
+
+.stat-row i {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: var(--primary-color);
+}
+
+.travel-quote {
+    margin-top: auto;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-style: italic;
+    color: var(--text-secondary);
+    display: flex;
+    gap: 1rem;
+}
+
+.travel-quote i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    opacity: 0.5;
+}
+
+/* 年份导航 */
+.year-navigation {
+    position: sticky;
+    top: 80px;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+}
+
+.year-nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.year-nav-track {
+    display: flex;
+    gap: 1rem;
+    padding: 0 2rem;
+}
+
+.year-nav-item {
+    padding: 0.8rem 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 1rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.year-nav-item.active {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.year-number {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.footprint-count {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* 足迹内容区 */
+.footprints-content {
+    padding: 4rem 2rem;
+}
+
+.content-container {
+    max-width: min(90vw, 2000px);
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.year-header {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.year-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.year-summary {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.footprints-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(clamp(280px, 25vw, 400px), 1fr));
+    gap: clamp(1rem, 2vw, 2rem);
+}
+
+/* 足迹卡片 */
+.footprint-card {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    border-radius: 1.5rem;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+    min-width: 280px;
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.footprint-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.card-media {
+    position: relative;
+    height: 200px;
+}
+
+.card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.5s ease;
+}
+
+.card-media img.active {
+    opacity: 1;
+    animation: fadeSlide 0.5s ease-out forwards;
+}
+
+.media-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.8),
+        transparent
+    );
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    color: white;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.location i {
+    color: var(--primary-color);
+}
+
+.card-content {
+    padding: 1.5rem;
+    position: relative;
+}
+
+.card-content h4 {
+    margin-bottom: 0.8rem;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+}
+
+.content-wrapper {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.5s ease-in-out;
+}
+
+.card-content.expanded .content-wrapper {
+    max-height: 300px;
+}
+
+.content-wrapper p {
+    margin: 0.8rem 0;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.4s ease-in-out 0.1s, transform 0.4s ease-in-out 0.1s;
+}
+
+.card-content.expanded .content-wrapper p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.expand-btn {
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.expand-btn i {
+    transition: transform 0.5s ease-in-out;
+}
+
+.expand-btn.expanded i {
+    transform: rotate(180deg);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 响应式调整 */
+@media (max-width: 1200px) {
+    .map-container {
+        flex-direction: column;
+    }
+
+    .map-wrapper {
+        flex: none;
+        height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footprints-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .year-header h2 {
+        font-size: 2rem;
+    }
+
+    .map-stats {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+/* 顶部统计区域 */
+.stats-banner {
+    padding: 4rem 2rem;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(255, 255, 255, 0.02) 100%
+    );
+}
+
+.stats-container {
+    max-width: min(90vw, 2000px);
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 2rem;
+}
+
+.stats-overview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(2rem, 4vw, 4rem);
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+}
+
+.stat-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-primary {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: bold;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px rgba(var(--primary-color-rgb), 0.3);
+}
+
+.stat-unit {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--text-primary);
+    opacity: 0.8;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        var(--primary-color),
+        transparent
+    );
+}
+
+.travel-quote {
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--text-secondary);
+    opacity: 0.8;
+}
+
+/* 足迹时间轴 */
+.footprints-timeline {
+    padding: 2rem;
+}
+
+.timeline-container {
+    max-width: min(90vw, 2000px);
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.year-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.year-tab {
+    padding: 0.8rem 1.5rem;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.year-tab::after {
+    content: '';
+    position: absolute;
+    bottom: -1rem;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.year-tab.active {
+    color: var(--text-primary);
+}
+
+.year-tab.active::after {
+    transform: scaleX(1);
+}
+
+.year {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.count {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* 月份分组 */
+.month-group {
+    margin-bottom: 4rem;
+}
+
+.month-label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+}
+
+.month-label .month {
+    font-size: 1.5rem;
+}
+
+.month-label .count {
+    color: var(--text-secondary);
+}
+
+/* 足迹卡片 */
+.footprints-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.footprint-card {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.08) 0%,
+        rgba(255, 255, 255, 0.03) 100%
+    );
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.footprint-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-header time {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.card-gallery {
+    position: relative;
+    height: clamp(200px, 25vw, 300px);
+}
+
+.card-gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-nav {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 0.3rem 0.8rem;
+    border-radius: 1rem;
+    color: white;
+    font-size: 0.9rem;
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.card-content h4 {
+    margin-bottom: 0.8rem;
+    color: var(--text-primary);
+}
+
+.content-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.card-footer {
+    padding: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.card-links {
+    flex: 1;
+}
+
+.content-links {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.content-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.content-link:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.content-link i {
+    font-size: 0.9rem;
+}
+
+/* Vlog标签特殊样式 */
+.content-link:first-child {
+    background: rgba(255, 87, 87, 0.1);
+    color: #ff5757;
+}
+
+.content-link:first-child:hover {
+    background: #ff5757;
+    color: white;
+}
+
+/* 故事标签特殊样式 */
+.content-link:last-child {
+    background: rgba(64, 156, 255, 0.1);
+    color: #409cff;
+}
+
+.content-link:last-child:hover {
+    background: #409cff;
+    color: white;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+/* 响应式调整 */
+@media (max-width: 480px) {
+    .content-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .content-link {
+        width: fit-content;
+    }
+}
+
+/* 添加悬停效果 */
+.stat-group:hover .stat-value {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+/* 深色模式适配 */
+.dark-mode .stat-value {
+    color: var(--primary-color);
+    text-shadow: 0 0 15px rgba(var(--primary-color-rgb), 0.5);
+}
+
+.dark-mode .stat-unit {
+    color: var(--text-primary);
+    opacity: 0.9;
+}
+
+/* 卡片动画效果 */
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes cardHover {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+    100% {
+        transform: translateY(-5px);
+    }
+}
+
+/* 图片切换动画 */
+@keyframes fadeSlide {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.card-gallery img {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.5s ease;
+}
+
+.card-gallery img.active {
+    opacity: 1;
+    animation: fadeSlide 0.5s ease-out forwards;
+}
+
+/* 标签悬停效果 */
+.tag {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.tag:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* 天气和心情图标动画 */
+.content-meta i {
+    transition: transform 0.3s ease;
+}
+
+.content-meta span:hover i {
+    transform: scale(1.2) rotate(10deg);
+}
+
+/* 展开按钮样式优化 */
+.expand-btn {
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    backdrop-filter: blur(5px);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.expand-btn:hover {
+    background: linear-gradient(
+        135deg,
+        var(--primary-color) 0%,
+        var(--secondary-color) 100%
+    );
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s ease-in-out;
+}
+
+.expand-btn i {
+    transition: transform 0.5s ease-in-out;
+    font-size: 1rem;
+}
+
+.expand-btn.expanded i {
+    transform: rotate(180deg) translateY(1px);
+}
+
+/* 展开按钮波纹效果 */
+.expand-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.expand-btn:active::after {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+}
+
+/* 卡片标题始终显示 */
+.card-content h4 {
+    margin-bottom: 0.8rem;
+    color: var(--text-primary);
+}
+
+/* 卡片描述默认隐藏 */
+.card-content p {
+    display: none;
+    margin: 0.8rem 0;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* 展开时显示描述文本 */
+.card-content.expanded p {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* 添加淡入动画 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 卡片内容基础样式 */
+.card-content {
+    padding: 1.5rem;
+    position: relative;
+}
+
+/* 卡片标题样式 */
+.card-content h4 {
+    margin-bottom: 0.8rem;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+}
+
+/* 内容包装器样式 */
+.content-wrapper {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.5s ease-in-out;
+}
+
+/* 展开状态 */
+.card-content.expanded .content-wrapper {
+    max-height: 300px;
+}
+
+/* 描述文本样式 */
+.content-wrapper p {
+    margin: 0.8rem 0;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.4s ease-in-out 0.1s, transform 0.4s ease-in-out 0.1s;
+}
+
+/* 展开时的描述文本 */
+.card-content.expanded .content-wrapper p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 展开按钮样式 */
+.expand-btn {
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.expand-btn i {
+    transition: transform 0.5s ease-in-out;
+}
+
+.expand-btn.expanded i {
+    transform: rotate(180deg);
+}
+
+/* 响应式布局调整 */
+@media (min-width: 2000px) {
+    /* 2K 及以上分辨率 */
+    .content-container,
+    .timeline-container,
+    .stats-container,
+    .map-container {
+        max-width: 2000px;
+    }
+    
+    body {
+        font-size: 18px; /* 增加基础字体大小 */
+    }
+    
+    .card-content h4 {
+        font-size: 1.4rem;
+    }
+    
+    .content-wrapper p {
+        font-size: 1.1rem;
+        line-height: 1.7;
+    }
+}
+
+@media (max-width: 1200px) {
+    .content-container,
+    .timeline-container,
+    .stats-container,
+    .map-container {
+        padding: 0 1.5rem;
+    }
+    
+    .footprints-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .content-container,
+    .timeline-container,
+    .stats-container,
+    .map-container {
+        padding: 0 1rem;
+    }
+    
+    .stats-overview {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .footprints-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .card-gallery {
+        height: 200px;
+    }
+}
+
+/* 添加平滑滚动 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 优化页面整体布局 */
+.footprints-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden; /* 防止水平滚动 */
+}
+
+/* 确保内容不会被导航栏遮挡 */
+.navbar + * {
+    margin-top: var(--navbar-height, 80px);
+}
+

@@ -1,0 +1,669 @@
+/* 关于我页面样式 */
+.about-page {
+    min-height: 100vh;
+    padding-top: 80px;  /* 为导航栏留出空间 */
+}
+
+/* 个人简介部分 */
+#profile {
+    padding: 4rem 0;
+}
+
+.profile-content {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 3rem;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    border-radius: 1rem;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.profile-image {
+    flex: 0 0 300px;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.profile-image img:hover {
+    transform: scale(1.05);
+}
+
+.profile-text {
+    flex: 1;
+}
+
+.profile-text h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.profile-text .intro {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    transform: translateY(-3px);
+    background: var(--primary-color);
+    color: white;
+}
+
+/* 技能特长部分 - 游戏风格 */
+#skills {
+    padding: 4rem 0;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.skill-card {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    border-radius: 1rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.skill-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skill-header i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.skill-header h3 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+}
+
+.skill-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.skill-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.skill-name {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    flex: 0 0 120px;
+}
+
+.skill-level {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.level-bar {
+    flex: 1;
+    height: 16px;
+    background: #444;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.level-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2ecc71, #27ae60);
+    border-radius: 8px;
+    transition: width 1s ease;
+    position: relative;
+    box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+}
+
+/* 发光效果 */
+.level-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 20%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    animation: shine 2s infinite;
+}
+
+@keyframes shine {
+    to {
+        left: 150%;
+    }
+}
+
+/* 深色模式适配 */
+.dark-mode .skill-card {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(255, 255, 255, 0.02) 100%
+    );
+}
+
+.dark-mode .skill-header {
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode .dot {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .skill-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .skill-name {
+        flex: none;
+        margin-bottom: 0.5rem;
+    }
+
+    .skill-level {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .level-bar {
+        height: 14px;
+    }
+}
+
+/* 教育背景部分 - 卡片式布局 */
+#education {
+    padding: 4rem 0;
+}
+
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.education-card {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    border-radius: 1rem;
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.education-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.education-header {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.education-header i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.education-title h3 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.education-title .time {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+}
+
+.education-content h4 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.course-list,
+.certification-list,
+.workshop-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+}
+
+.course-list li,
+.certification-list li,
+.workshop-list li {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.course-list li::before,
+.certification-list li::before,
+.workshop-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+.achievements {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.achievement-tag {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 2rem;
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+.achievement-tag:hover {
+    transform: translateY(-2px);
+}
+
+.cert-name {
+    display: block;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.cert-org {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* 深色模式适配 */
+.dark-mode .education-card {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(255, 255, 255, 0.02) 100%
+    );
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .education-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .profile-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .profile-image {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-content {
+        margin-left: 50px;
+    }
+
+    .timeline-content::before {
+        left: -40px;
+    }
+}
+
+/* 深色模式适配 */
+.dark-mode .profile-content,
+.dark-mode .skill-card,
+.dark-mode .timeline-content {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(255, 255, 255, 0.02) 100%
+    );
+}
+
+.dark-mode .social-link {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode #skills {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* 兴趣爱好部�� */
+#interests {
+    padding: 4rem 0;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.interests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.interest-card {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    border-radius: 1rem;
+    padding: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.interest-card:hover {
+    transform: translateY(-5px);
+}
+
+.interest-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 1.5rem;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.interest-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.interest-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.interest-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.interest-gallery img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.interest-gallery img:hover {
+    transform: scale(1.05);
+}
+
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.book-tag {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* 个人特长部分 */
+#specialties {
+    padding: 4rem 0;
+}
+
+.specialties-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.specialty-card {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    border-radius: 1rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.specialty-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.specialty-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.specialty-header i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.specialty-header h3 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+}
+
+.specialty-list {
+    list-style: none;
+    padding: 0;
+}
+
+.specialty-list li {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.specialty-list li::before {
+    content: '•';
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+}
+
+/* 深色模式适配 */
+.dark-mode .interest-card,
+.dark-mode .specialty-card {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(255, 255, 255, 0.02) 100%
+    );
+}
+
+.dark-mode .book-tag {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .interests-grid,
+    .specialties-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 教育背景部分样式扩充 */
+.course-list,
+.certification-list,
+.workshop-list {
+    list-style: none;
+    padding-left: 1rem;
+    margin: 1rem 0;
+}
+
+.course-list li,
+.certification-list li,
+.workshop-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.course-list li::before,
+.certification-list li::before,
+.workshop-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+.achievements {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.achievement-tag {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+.achievement-tag:hover {
+    transform: translateY(-2px);
+}
+
+.cert-name {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.cert-org {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* 时间线样式优化 */
+.timeline-item:nth-child(even) .timeline-content {
+    margin-left: 0;
+    margin-right: 50%;
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) .timeline-content::before {
+    left: auto;
+    right: -10px;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .timeline-item:nth-child(even) .timeline-content {
+        margin-left: 50px;
+        margin-right: 0;
+        text-align: left;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content::before {
+        left: -40px;
+        right: auto;
+    }
+
+    .achievements {
+        justify-content: flex-start;
+    }
+} 

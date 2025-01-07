@@ -1,0 +1,354 @@
+/* 基础重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* 导航栏布局 */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* 导航栏滚动状态 */
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.navbar.hidden {
+    transform: translateY(-100%);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease;
+}
+
+.nav-logo:hover {
+    transform: translateY(-2px);
+}
+
+.nav-logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.nav-logo:hover img {
+    transform: rotate(360deg);
+}
+
+.nav-logo span {
+    transition: color 0.3s ease;
+}
+
+.nav-logo:hover span {
+    color: var(--primary-color);
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: inherit;
+    padding: 0.5rem;
+    position: relative;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+/* 导航链接下划线动效 */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    transition: width 0.3s ease;
+}
+
+/* 悬停和激活状态 */
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--text-primary);
+    opacity: 0.8;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+/* 添加动画延迟 */
+.nav-links a:nth-child(1) { transition-delay: 0.1s; }
+.nav-links a:nth-child(2) { transition-delay: 0.2s; }
+.nav-links a:nth-child(3) { transition-delay: 0.3s; }
+.nav-links a:nth-child(4) { transition-delay: 0.4s; }
+.nav-links a:nth-child(5) { transition-delay: 0.5s; }
+
+/* 添加滑动效果 */
+.nav-links a {
+    transform: translateY(0);
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    transform: translateY(-2px);
+}
+
+/* 页脚布局 */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(10px);
+    margin-top: auto;
+}
+
+/* 页脚链接样式 */
+footer a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--primary-color);
+}
+
+/* 响应式导航 */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+}
+
+/* 深色模式适配 */
+@media (prefers-color-scheme: dark) {
+    .navbar {
+        background: rgba(0, 0, 0, 0.05);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    footer {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .navbar.scrolled {
+        background: rgba(0, 0, 0, 0.15);
+    }
+}
+
+/* 模块标题样式 */
+.section-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* 箭头样式和动效 */
+.section-title i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+    color: var(--primary-color);  /* 使用主题色 */
+    opacity: 0;
+    transform: translateX(-10px);
+}
+
+/* 悬停效果 */
+.section-title:hover {
+    color: var(--primary-color);  /* 悬停时文字变为主题色 */
+}
+
+.section-title:hover i {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* 标题下划线效果 */
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.section-title:hover::after {
+    width: 100%;
+}
+
+/* 深色模式适配 */
+.dark-mode .section-title {
+    color: var(--text-light);
+}
+
+.dark-mode .section-title:hover {
+    color: var(--primary-color);
+}
+
+/* 主题切换按钮和回到顶部按钮的共同样式 */
+.theme-toggle,
+.back-to-top {
+    position: fixed;
+    right: 2rem;
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    backdrop-filter: blur(10px);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+/* 主题切换按钮位置 */
+.theme-toggle {
+    bottom: 7rem;
+}
+
+/* 回到顶部按钮位置 */
+.back-to-top {
+    bottom: 2rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* 按钮悬停效果 */
+.theme-toggle:hover,
+.back-to-top:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(
+        135deg,
+        var(--primary-color) 0%,
+        var(--secondary-color) 100%
+    );
+    color: white;
+    box-shadow: 0 6px 20px rgba(var(--primary-color-rgb), 0.3);
+}
+
+/* 图标样式 */
+.theme-toggle i,
+.back-to-top i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover i {
+    transform: rotate(180deg);
+}
+
+.back-to-top:hover i {
+    transform: translateY(-2px);
+}
+
+/* 波纹效果 */
+.theme-toggle::after,
+.back-to-top::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.theme-toggle:active::after,
+.back-to-top:active::after {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+}
+
+/* 深色模式适配 */
+.dark-mode .theme-toggle,
+.dark-mode .back-to-top {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.08) 0%,
+        rgba(255, 255, 255, 0.03) 100%
+    );
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .theme-toggle,
+    .back-to-top {
+        right: 1rem;
+        width: 42px;
+        height: 42px;
+    }
+
+    .theme-toggle {
+        bottom: 6rem;
+    }
+
+    .back-to-top {
+        bottom: 1rem;
+    }
+} 

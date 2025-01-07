@@ -1,0 +1,953 @@
+/* 首页布局 */
+#home {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 个人信息容器 */
+.profile-container {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.profile-wrapper {
+    width: 100%;
+    max-width: 1400px;
+    margin: calc(-15vh) auto 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    position: relative;
+}
+
+/* 个人照片区域 */
+.profile-photo-container {
+    position: absolute;
+    width: 280px;
+    left: 1%;
+    transform: translateX(-50%);
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 4;
+}
+
+.profile-photo {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 10px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+/* 个人信息弹出框 */
+.profile-info {
+    position: absolute;
+    left: 50%;
+    top: 110%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 400px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease;
+    z-index: 5;
+}
+
+.profile-photo-container:hover .profile-info {
+    opacity: 1;
+    visibility: visible;
+    top: 120%;
+}
+
+/* 轮播图区域 */
+.carousel-container {
+    position: relative;
+    width: 75%;
+    margin-right: 5%;
+    margin-top: 5%;
+    height: 700px;
+    overflow: hidden;
+    z-index: 3;
+    background: transparent;
+}
+
+.animated-list {
+    position: relative;
+    height: 100%;
+    padding: 2rem;
+    display: flex;
+    gap: 2rem;
+    white-space: nowrap;
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+.carousel-item {
+    position: relative;
+    min-width: 500px;
+    transform-origin: center;
+    transition: all 0.5s ease;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+.image-card {
+    position: relative;
+    width: 100%;
+    background: transparent;
+    border-radius: 1rem;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    will-change: transform;
+}
+
+.image-card img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    transform: scale(1.01);
+    backface-visibility: hidden;
+    transition: transform 0.4s ease;
+}
+
+.image-card figcaption {
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+}
+
+.image-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.image-card p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* 优化悬停效果 */
+.image-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.image-card:hover img {
+    transform: scale(1.05);
+}
+
+/* 欢迎语部分 */
+#welcome {
+    padding: 4rem 0;
+    position: relative;
+    z-index: 2;
+    margin-top: -20rem;
+}
+
+.welcome-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+}
+
+.welcome-line {
+    position: relative;
+    height: 3rem;
+    overflow: hidden;
+}
+
+.welcome-word {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    font-size: 2rem;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(50%);
+    background: linear-gradient(45deg, #3498db, #2ecc71);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: wordSlide 16s infinite;
+    visibility: hidden;
+}
+
+/* 欢迎语动画延迟 */
+.welcome-line:nth-child(1) .welcome-word:nth-child(1) { animation-delay: 0s; }
+.welcome-line:nth-child(1) .welcome-word:nth-child(2) { animation-delay: 4s; }
+.welcome-line:nth-child(1) .welcome-word:nth-child(3) { animation-delay: 8s; }
+.welcome-line:nth-child(1) .welcome-word:nth-child(4) { animation-delay: 12s; }
+
+.welcome-line:nth-child(2) .welcome-word:nth-child(1) { animation-delay: 2s; }
+.welcome-line:nth-child(2) .welcome-word:nth-child(2) { animation-delay: 6s; }
+.welcome-line:nth-child(2) .welcome-word:nth-child(3) { animation-delay: 10s; }
+.welcome-line:nth-child(2) .welcome-word:nth-child(4) { animation-delay: 14s; }
+
+@keyframes wordSlide {
+    0%, 5% {
+        opacity: 0;
+        transform: translateY(50%);
+        visibility: visible;
+    }
+    10%, 20% {
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+    }
+    25%, 100% {
+        opacity: 0;
+        transform: translateY(-50%);
+        visibility: hidden;
+    }
+}
+
+/* 深色模式配 */
+.dark-mode .welcome-word {
+    background: linear-gradient(45deg, #fff, #ccc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    #welcome {
+        margin-top: -20rem;
+        padding: 2rem 0;
+    }
+    
+    .welcome-word {
+        font-size: 1.5rem;
+    }
+}
+
+/* 内容区域布局 */
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: transparent;
+    box-shadow: none;
+}
+
+/* 内容网格布局 */
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+/* 通用卡片样式 */
+.content-card, .project-card, .work-card, .footprint-card {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 卡片内容区域 */
+.content-details, .project-info, .work-info, .footprint-info {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+/* 卡片标题样式 */
+.content-card h3, .project-card h3, .work-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+/* 卡片描述文本 */
+.content-desc, .project-desc, .work-desc, .footprint-desc {
+    margin: 1.5rem 0;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+/* 标签样式统一 */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+}
+
+.tag {
+    padding: 0.4rem 1rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    backdrop-filter: blur(5px);
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* 停效果 */
+.content-card:hover, .project-card:hover, .work-card:hover, .footprint-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* 深色模式适配 */
+.dark-mode .content-card,
+.dark-mode .project-card,
+.dark-mode .work-card,
+.dark-mode .footprint-card {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(255, 255, 255, 0.02) 100%
+    );
+}
+
+.dark-mode .content-details,
+.dark-mode .project-info,
+.dark-mode .work-info,
+.dark-mode .footprint-info {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .tag {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* 日期和时间标签统一样式 */
+.content-date, .project-date, .work-date, .footprint-date {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+/* 图片容器统一样式 */
+.image-container {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.content-card:hover .image-container img,
+.project-card:hover .image-container img,
+.work-card:hover .image-container img,
+.footprint-card:hover .image-container img {
+    transform: scale(1.05);
+}
+
+/* 留言板样式 */
+.guestbook-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+/* 留言墙样式 */
+.comments-wall {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    margin-bottom: 3rem;
+    border-radius: 1rem;
+}
+
+.scroll-row {
+    position: relative;
+    height: 120px;
+    overflow: hidden;
+}
+
+.scroll-content {
+    position: absolute;
+    display: flex;
+    gap: 2rem;
+    padding: 1rem 0;
+    animation: scrollX 25s linear infinite;
+    width: 200%;
+}
+
+.scroll-content > * {
+    flex-shrink: 0;
+}
+
+/* 不同速度的滚动行 */
+.scroll-row[data-speed="-0.8"] .scroll-content {
+    animation-direction: reverse;
+    animation-duration: 35s;
+}
+
+.scroll-row[data-speed="1.2"] .scroll-content {
+    animation-duration: 20s;
+}
+
+/* 悬停时暂停动画 */
+.scroll-row:hover .scroll-content {
+    animation-play-state: paused;
+}
+
+/* 留言卡片样式 */
+.comment-card {
+    flex: 0 0 250px;
+    min-width: 250px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-right: 1rem;
+    backdrop-filter: blur(5px);
+}
+
+.comment-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.comment-author {
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.comment-text {
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* 留言输入区域 */
+.guestbook-input {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.comment-info-inputs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.comment-info-inputs input {
+    flex: 1;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    backdrop-filter: blur(5px);
+}
+
+textarea {
+    width: 100%;
+    height: 120px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    resize: vertical;
+    backdrop-filter: blur(5px);
+}
+
+/* 联系方式样式 */
+.contact-section {
+    padding: 4rem 0;
+    margin-bottom: 2rem;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    height: 60px;
+}
+
+.contact-item:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-item i {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* 微信二维码悬浮 */
+.contact-item.wechat {
+    position: relative;
+}
+
+.qr-code {
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    border-radius: 0.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.contact-item.wechat:hover .qr-code {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) scale(0.9);
+}
+
+/* 深色模式适配 */
+.dark-mode .comment-card,
+.dark-mode .comment-info-inputs input,
+.dark-mode textarea,
+.dark-mode .contact-item {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .comment-info-inputs {
+        flex-direction: column;
+    }
+
+    .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .contact-item {
+        padding: 0.8rem 1.2rem;
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 继续添加其他样式... */
+
+/* 足网格布局 */
+.footprints-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+/* 足迹卡片样式 */
+.footprint-card {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footprint-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* 足迹图片区域 */
+.footprint-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.footprint-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.footprint-card:hover .footprint-image img {
+    transform: scale(1.05);
+}
+
+/* 日期标签 */
+.footprint-date {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    backdrop-filter: blur(5px);
+}
+
+/* 足迹信息区域 */
+.footprint-info {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+.footprint-location {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.footprint-location i {
+    color: var(--primary-color);
+}
+
+.footprint-desc {
+    margin: 1.5rem 0;
+    line-height: 1.6;
+}
+
+/* 标签样式 */
+.footprint-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+}
+
+.footprint-tags .tag {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    backdrop-filter: blur(5px);
+}
+
+/* 深色模式适配 */
+.dark-mode .footprint-card {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(255, 255, 255, 0.02) 100%
+    );
+}
+
+.dark-mode .footprint-info {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .footprint-tags .tag {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .footprints-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footprint-image {
+        height: 180px;
+    }
+
+    .footprint-info {
+        padding: 1rem;
+    }
+}
+
+/* 动动画 */
+@keyframes scrollX {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* 联系方式品牌色 */
+.contact-item.github:hover {
+    background: linear-gradient(135deg, #24292e, #1a1e22);
+    color: #fff;
+}
+
+.contact-item.bilibili:hover {
+    background: linear-gradient(135deg, #fb7299, #fc8bab);
+    color: #fff;
+}
+
+.contact-item.wechat:hover {
+    background: linear-gradient(135deg, #07c160, #10d36a);
+    color: #fff;
+}
+
+.contact-item.qq:hover {
+    background: linear-gradient(135deg, #12b7f5, #1ec7ff);
+    color: #fff;
+}
+
+.contact-item.instagram:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: #fff;
+}
+
+.contact-item.email:hover {
+    background: linear-gradient(135deg, #4285f4, #34a853);
+    color: #fff;
+}
+
+/* 图标悬停效果 */
+.contact-item:hover i {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+/* 文字悬停效果 */
+.contact-item span {
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover span {
+    font-weight: 500;
+}
+
+/* 项目和作品卡片样式 */
+.project-info,
+.work-info {
+    padding: 2rem;
+}
+
+/* 留言板发送按钮样式优化 */
+.message-form button {
+    padding: 0.8rem 2rem;
+    background: linear-gradient(
+        135deg,
+        var(--primary-color) 0%,
+        var(--secondary-color) 100%
+    );
+    color: white;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.message-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(var(--primary-color-rgb), 0.3);
+}
+
+/* 发送按钮图标 */
+.message-form button i {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+}
+
+.message-form button:hover i {
+    transform: translateX(3px);
+}
+
+/* 发送按钮波纹效果 */
+.message-form button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: all 0.4s ease;
+    border-radius: 2rem;
+}
+
+.message-form button:active::after {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+}
+
+/* 发送按钮禁用状态 */
+.message-form button:disabled {
+    background: linear-gradient(
+        135deg,
+        rgba(var(--primary-color-rgb), 0.5) 0%,
+        rgba(var(--secondary-color-rgb), 0.5) 100%
+    );
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* 内容卡片样式优化 */
+.content-card {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    padding: 2rem;
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.content-card h3 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.content-date {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    opacity: 0.8;
+}
+
+.content-desc {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin: 0.5rem 0;
+}
+
+.content-details {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.content-details h4 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.8rem;
+}
+
+.content-details p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* 卡片悬停效果 */
+.content-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.15) 0%,
+        rgba(255, 255, 255, 0.08) 100%
+    );
+}
+
+/* 网格布局优化 */
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+/* 深色模式适配 */
+.dark-mode .content-card {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.08) 0%,
+        rgba(255, 255, 255, 0.03) 100%
+    );
+}
+
+.dark-mode .content-card:hover {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.12) 0%,
+        rgba(255, 255, 255, 0.06) 100%
+    );
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .content-card {
+        padding: 1.5rem;
+    }
+    
+    .content-grid {
+        gap: 1.5rem;
+    }
+}
+
+/* 联系方式品牌色 */
+.contact-item.weibo:hover {
+    background: linear-gradient(135deg, #ff8140, #ff5440);
+    color: #fff;
+}
+
+.contact-item.tiktok:hover {
+    background: linear-gradient(135deg, #000000, #25f4ee);
+    color: #fff;
+    text-shadow: 2px 2px 8px rgba(255, 0, 0, 0.5);
+}
+
+.contact-item.twitter:hover {
+    background: linear-gradient(135deg, #1da1f2, #0d8ecf);
+    color: #fff;
+}
+
+.contact-item.youtube:hover {
+    background: linear-gradient(135deg, #ff0000, #cc0000);
+    color: #fff;
+}

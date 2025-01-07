@@ -1,0 +1,193 @@
+/* 作品页面样式 */
+.works-page {
+    min-height: 100vh;
+    padding-top: 80px;
+}
+
+/* 创意标题 */
+.works-header {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.creative-title {
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.letter {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: letterFloat 0.5s ease forwards;
+    animation-delay: var(--delay);
+}
+
+@keyframes letterFloat {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 作品展示区 */
+.works-showcase {
+    padding: 2rem 0;
+}
+
+.works-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    perspective: 1000px;
+}
+
+/* 作品卡片 */
+.work-card {
+    height: 400px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.work-card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.card-front {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+}
+
+.card-front img,
+.card-front video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.work-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    color: white;
+    font-size: 1.5rem;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.work-card:hover .work-title {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.card-back h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.card-back p {
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.work-tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.tag {
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2rem;
+    font-size: 0.9rem;
+}
+
+.view-more {
+    padding: 0.8rem 2rem;
+    background: white;
+    color: #2c3e50;
+    border-radius: 2rem;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.view-more:hover {
+    transform: translateY(-3px);
+}
+
+/* 视频卡片特殊样式 */
+.work-card.video .card-front video {
+    filter: brightness(0.8);
+}
+
+/* 3D模型卡片特殊样式 */
+.model-viewer {
+    width: 100%;
+    height: 100%;
+    background: #000;
+}
+
+/* 深色模式适配 */
+.dark-mode .card-back {
+    background: linear-gradient(135deg, #1a1a1a, #2c3e50);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .creative-title {
+        font-size: 2rem;
+        gap: 0.5rem;
+    }
+
+    .works-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .work-card {
+        height: 300px;
+    }
+} 
