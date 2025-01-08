@@ -17,9 +17,6 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border-radius: 1rem;
 }
 
 .profile-wrapper {
@@ -503,6 +500,11 @@
     padding: 2rem;
 }
 
+/* 深色模式适配 */
+.dark-mode .guestbook-container {
+    background: rgba(30, 30, 30, 0.6);
+}
+
 /* 留言墙样式 */
 .comments-wall {
     position: relative;
@@ -548,13 +550,11 @@
 
 /* 留言卡片样式 */
 .comment-card {
-    flex: 0 0 250px;
-    min-width: 250px;
     background: rgba(255, 255, 255, 0.1);
     padding: 1rem;
+    margin: 0.5rem;
     border-radius: 1rem;
-    margin-right: 1rem;
-    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
 }
 
 .comment-content {
@@ -575,9 +575,10 @@
 
 /* 留言输入区域 */
 .guestbook-input {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin-top: 2rem;
 }
 
 .comment-info-inputs {
@@ -631,20 +632,20 @@ textarea {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 1rem;
     text-decoration: none;
-    color: var(--text-primary);
+    color: var(--text-secondary);
     transition: all 0.3s ease;
     height: 60px;
 }
 
 .contact-item:hover {
-    transform: translateY(-3px);
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    color: var(--text-primary);
 }
 
 .contact-item i {
     font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
 }
 
 /* 微信二维码悬浮 */
@@ -653,24 +654,19 @@ textarea {
 }
 
 .qr-code {
+    display: none;
     position: absolute;
-    bottom: 120%;
+    bottom: 100%;
     left: 50%;
-    transform: translateX(-50%) scale(0.8);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    border-radius: 0.5rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transform: translateX(-50%);
     width: 150px;
     height: 150px;
-    object-fit: cover;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .contact-item.wechat:hover .qr-code {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) scale(0.9);
+    display: block;
 }
 
 /* 深色模式适配 */
@@ -679,6 +675,16 @@ textarea {
 .dark-mode textarea,
 .dark-mode .contact-item {
     background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.dark-mode .contact-item i {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.dark-mode .contact-item:hover,
+.dark-mode .contact-item:hover i {
+    color: rgba(255, 255, 255, 0.95);
 }
 
 /* 响应式调整 */
@@ -973,9 +979,9 @@ textarea {
         rgba(255, 255, 255, 0.1) 0%,
         rgba(255, 255, 255, 0.05) 100%
     );
+    backdrop-filter: blur(10px);
     padding: 2rem;
     border-radius: 1rem;
-    backdrop-filter: blur(10px);
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -1001,9 +1007,10 @@ textarea {
 }
 
 .content-details {
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    margin-top: 1rem;
 }
 
 .content-details h4 {
@@ -1155,3 +1162,120 @@ textarea {
 }
 
 /* 保留首页特有的其他样式 */
+
+/* 联系方式卡片 */
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    text-decoration: none;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+    height: 60px;
+}
+
+/* 留言表单样式 */
+.guestbook-form input,
+.guestbook-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+    color: var(--text-primary);
+}
+
+/* 留言卡片样式 */
+.comment-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    margin: 0.5rem;
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* 按钮样式 */
+.guestbook-form button,
+.content-link {
+    padding: 0.8rem 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* 技能标签 */
+.skill-tag {
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    font-size: 0.9rem;
+}
+
+/* 深色模式适配 */
+.dark-mode .contact-item,
+.dark-mode .guestbook-form input,
+.dark-mode .guestbook-form textarea,
+.dark-mode .comment-card,
+.dark-mode .content-link,
+.dark-mode .skill-tag {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* 角色标签 */
+.role-tag {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    font-size: 0.9rem;
+    margin: 0.3rem;
+}
+
+/* 技术清单标签 */
+.tech-tag {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    font-size: 0.9rem;
+    margin: 0.3rem;
+}
+
+/* 课程标签 */
+.course-tag {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    font-size: 0.9rem;
+    margin: 0.3rem;
+}
+
+/* 深色模式适配 */
+.dark-mode .role-tag,
+.dark-mode .tech-tag,
+.dark-mode .course-tag {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* 标签悬停效果 */
+.role-tag:hover,
+.tech-tag:hover,
+.course-tag:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* 内容详情悬停效果 */
+.content-details:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}

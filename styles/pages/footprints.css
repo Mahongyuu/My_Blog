@@ -313,6 +313,10 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    padding: 0.3rem 0.8rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    font-size: 0.9rem;
 }
 
 .location i {
@@ -507,12 +511,17 @@
     gap: 1rem;
     margin-bottom: 3rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 0.8rem 1.5rem;
+    border-radius: 2rem;
+    margin: 0 1rem 3rem 1rem;
 }
 
 .year-tab {
     padding: 0.8rem 1.5rem;
-    background: none;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1.5rem;
     border: none;
     color: var(--text-secondary);
     cursor: pointer;
@@ -523,24 +532,14 @@
     position: relative;
 }
 
-.year-tab::after {
-    content: '';
-    position: absolute;
-    bottom: -1rem;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--primary-color);
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
+.year-tab:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
 }
 
 .year-tab.active {
     color: var(--text-primary);
-}
-
-.year-tab.active::after {
-    transform: scaleX(1);
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .year {
@@ -668,7 +667,7 @@
     gap: 0.5rem;
     padding: 0.4rem 0.8rem;
     background: rgba(255, 255, 255, 0.08);
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     color: var(--text-secondary);
     font-size: 0.9rem;
     text-decoration: none;
@@ -711,6 +710,135 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+}
+
+/* 响应式调整 */
+@media (max-width: 480px) {
+    .content-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .content-link {
+        width: fit-content;
+    }
+}
+
+/* 添加悬停效果 */
+.stat-group:hover .stat-value {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+/* 深色模式适配 */
+.dark-mode .stat-value {
+    color: var(--primary-color);
+    text-shadow: 0 0 15px rgba(var(--primary-color-rgb), 0.5);
+}
+
+.dark-mode .stat-unit {
+    color: var(--text-primary);
+    opacity: 0.9;
+}
+
+/* 卡片动画效果 */
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes cardHover {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+    100% {
+        transform: translateY(-5px);
+    }
+}
+
+/* 图片切换动画 */
+@keyframes fadeSlide {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.card-gallery img {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.5s ease;
+}
+
+.card-gallery img.active {
+    opacity: 1;
+    animation: fadeSlide 0.5s ease-out forwards;
+}
+
+/* 标签悬停效果 */
+.tag {
+    padding: 0.3rem 0.8rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+}
+
+.tag:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* 天气和心情标签 */
+.content-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0.8rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    font-size: 0.9rem;
+}
+
+/* 位置标签 */
+.location {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0.8rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    font-size: 0.9rem;
+}
+
+/* 深色模式适配 */
+.dark-mode .content-link,
+.dark-mode .tag,
+.dark-mode .content-meta span,
+.dark-mode .location {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode .content-link:hover,
+.dark-mode .tag:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
 /* 响应式调整 */
@@ -1051,5 +1179,19 @@ main {
 /* 确保内容不会被导航栏遮挡 */
 .navbar + * {
     margin-top: var(--navbar-height, 80px);
+}
+
+/* 深色模式适配 */
+.dark-mode .year-tabs {
+    background: rgba(30, 30, 30, 0.6);
+}
+
+.dark-mode .year-tab {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode .year-tab:hover,
+.dark-mode .year-tab.active {
+    background: rgba(255, 255, 255, 0.1);
 }
 

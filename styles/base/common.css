@@ -289,4 +289,120 @@ footer a:hover {
     .back-to-top {
         bottom: 1rem;
     }
+}
+
+/* 深色模式文字颜色适配 */
+.dark-mode {
+    --text-primary: rgba(255, 255, 255, 0.95);
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --text-tertiary: rgba(255, 255, 255, 0.5);
+    color: var(--text-primary);
+}
+
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode h4,
+.dark-mode h5,
+.dark-mode h6 {
+    color: var(--text-primary);
+}
+
+.dark-mode p,
+.dark-mode span,
+.dark-mode li {
+    color: var(--text-secondary);
+}
+
+/* 深色模式下的卡片背景 */
+.dark-mode .content-card,
+.dark-mode .project-card,
+.dark-mode .footprint-card,
+.dark-mode .work-card {
+    background: rgba(30, 30, 30, 0.6);
+}
+
+/* 深色模式下的标签 */
+.dark-mode .tag,
+.dark-mode .tech-tag {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+}
+
+/* 深色模式下的链接 */
+.dark-mode a {
+    color: var(--text-primary);
+}
+
+.dark-mode a:hover {
+    color: var(--primary-color);
+}
+
+/* 深色模式下的输入框 */
+.dark-mode input,
+.dark-mode textarea {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+/* 深色模式下的按钮 */
+.dark-mode button {
+    color: var(--text-primary);
+}
+
+/* 深色模式下的图标 */
+.dark-mode .fas,
+.dark-mode .fab {
+    color: var(--text-secondary);
+}
+
+/* 深色模式下的导航栏 */
+.dark-mode .navbar {
+    background: rgba(30, 30, 30, 0.8);
+}
+
+/* 深色模式下的页脚 */
+.dark-mode footer {
+    background: rgba(30, 30, 30, 0.8);
+    color: var(--text-secondary);
+}
+
+/* 深色模式下的分割线 */
+.dark-mode hr {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 深色模式下的引用 */
+.dark-mode blockquote {
+    border-left-color: var(--primary-color);
+    color: var(--text-secondary);
+}
+
+/* 深色模式下的表格 */
+.dark-mode table {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode th,
+.dark-mode td {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 深色模式下的代码块 */
+.dark-mode code {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+/* 深色模式下的滚动条 */
+.dark-mode ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
 } 

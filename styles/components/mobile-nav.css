@@ -115,6 +115,11 @@
 .nav-links {
     display: flex;
     gap: 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    margin: 0 1rem;
 }
 
 .nav-links a {
@@ -178,10 +183,10 @@
         top: -150%;
         right: 0;
         left: 0;
+        margin: 0;
         width: auto;
         height: auto;
         max-height: 80vh;
-        margin: 0;
         background: rgba(255, 255, 255, 0.15);
         backdrop-filter: blur(20px);
         padding: 4rem 1.5rem 2rem;
@@ -229,7 +234,7 @@
 
 /* 深色模式适配 */
 .dark-mode .nav-links {
-    background: rgba(40, 40, 40, 0.8);
+    background: rgba(30, 30, 30, 0.6);
 }
 
 .dark-mode .nav-links a {
@@ -308,5 +313,14 @@
 
 /* 深色模式适配 */
 .dark-mode .navbar.scrolled {
+    background: rgba(30, 30, 30, 0.8);
+}
+
+/* 首页特殊样式 */
+.home-page .nav-links {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.home-page.dark-mode .nav-links {
     background: rgba(30, 30, 30, 0.8);
 } 
