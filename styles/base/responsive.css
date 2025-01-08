@@ -1,0 +1,92 @@
+/* 移动端响应式样式 */
+@media screen and (max-width: 768px) {
+    /* 导航栏样式 */
+    .nav-container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .nav-links a {
+        padding: 10px;
+        margin: 5px 0;
+    }
+
+    /* 个人信息部分 */
+    .profile-container {
+        padding: 20px;
+    }
+
+    .profile-wrapper {
+        flex-direction: column;
+    }
+
+    .profile-photo-container {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* 轮播图部分 */
+    .carousel-container {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    .carousel-item {
+        width: 300px;
+    }
+
+    /* 内容卡片 */
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 10px;
+    }
+
+    /* 足迹展示 */
+    .footprints-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    /* 留言板 */
+    .guestbook-container {
+        padding: 10px;
+    }
+
+    .comment-info-inputs {
+        flex-direction: column;
+    }
+
+    .comment-info-inputs input {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    /* 联系方式 */
+    .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+}
+
+/* 平板设备响应式样式 */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .content-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footprints-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+} 

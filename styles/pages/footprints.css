@@ -213,10 +213,42 @@
     font-size: 1.1rem;
 }
 
+/* 年份分组网格布局 */
+.year-group {
+    margin-bottom: 3rem;
+}
+
+.year-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+    position: relative;
+    display: inline-block;
+}
+
+/* 统一卡片网格布局 */
 .footprints-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(clamp(280px, 25vw, 400px), 1fr));
-    gap: clamp(1rem, 2vw, 2rem);
+    grid-template-columns: repeat(3, 1fr);  /* 统一改为3列布局 */
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* 响应式调整 */
+@media (max-width: 1200px) {
+    .footprints-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .footprints-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .year-title {
+        font-size: 1.8rem;
+    }
 }
 
 /* 足迹卡片 */
@@ -543,12 +575,6 @@
 }
 
 /* 足迹卡片 */
-.footprints-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
 .footprint-card {
     background: linear-gradient(
         135deg,

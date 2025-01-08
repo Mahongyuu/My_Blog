@@ -1,0 +1,98 @@
+project-root/
+├── src/                      # 源代码目录
+│   ├── assets/              # 静态资源
+│   │   ├── images/         # 图片资源
+│   │   ├── fonts/          # 字体文件
+│   │   └── icons/          # 图标资源
+│   │
+│   ├── styles/             # CSS 样式文件
+│   │   ├── base/          # 基础样式
+│   │   │   ├── reset.css  # 重置样式
+│   │   │   ├── variables.css  # 变量定义
+│   │   │   └── typography.css # 排版样式
+│   │   │
+│   │   ├── components/    # 组件样式
+│   │   │   ├── buttons.css
+│   │   │   ├── cards.css
+│   │   │   └── forms.css
+│   │   │
+│   │   ├── layouts/       # 布局样式
+│   │   │   ├── header.css
+│   │   │   ├── footer.css
+│   │   │   └── grid.css
+│   │   │
+│   │   ├── pages/         # 页面特定样式
+│   │   │   ├── home.css
+│   │   │   └── about.css
+│   │   │
+│   │   └── utils/         # 工具类样式
+│   │       ├── animations.css
+│   │       └── helpers.css
+│   │
+│   ├── js/                # JavaScript 文件
+│   │   ├── core/         # 核心功能
+│   │   │   ├── api.js    # API 调用
+│   │   │   └── utils.js  # 工具函数
+│   │   │
+│   │   ├── components/   # 组件脚本
+│   │   │   ├── carousel.js
+│   │   │   └── modal.js
+│   │   │
+│   │   ├── pages/        # 页面特定脚本
+│   │   │   ├── home.js
+│   │   │   └── about.js
+│   │   │
+│   │   └── main.js       # 主入口文件
+│   │
+│   └── pages/            # HTML 页面
+│       ├── index.html
+│       ├── about.html
+│       └── contact.html
+│
+├── public/               # 公共资源目录
+│   ├── favicon.ico
+│   └── robots.txt
+│
+├── dist/                # 构建输出目录
+├── node_modules/        # 依赖包目录
+├── package.json         # 项目配置
+└── README.md           # 项目说明
+
+
+
+后台
+src/main/java/com/blog
+├── BlogApplication.java
+├── config/                    # 配置类
+│   ├── WebConfig.java        # Web配置
+│   ├── SwaggerConfig.java    # API文档配置
+│   └── SecurityConfig.java   # 安全配置
+│
+├── controller/               # 控制器层
+│   ├── ProjectController.java
+│   ├── WorkController.java
+│   ├── FootprintController.java
+│   ├── CommentController.java
+│   └── AdminController.java
+│
+├── service/                  # 服务层
+│   ├── impl/                # 服务实现
+│   └── interfaces/          # 服务接口
+│
+├── repository/              # 数据访问层
+│   ├── ProjectRepository.java
+│   ├── WorkRepository.java
+│   ├── FootprintRepository.java
+│   └── CommentRepository.java
+│
+├── model/                   # 实体类
+│   ├── entity/             # 数据库实体
+│   └── dto/                # 数据传输对象
+│
+├── common/                  # 公共组件
+│   ├── constant/           # 常量
+│   ├── exception/          # 异常处理
+│   └── utils/              # 工具类
+│
+└── security/               # 安全相关
+    └── JwtUtils.java      # JWT工具类

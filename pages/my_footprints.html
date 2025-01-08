@@ -9,17 +9,21 @@
     <meta name="author" content="Mahongyu">
     <link rel="stylesheet" href="../styles/base/backgrounds.css">
     <link rel="stylesheet" href="../styles/base/common.css">
+    <link rel="stylesheet" href="../styles/components/mobile-nav.css">
     <link rel="stylesheet" href="../styles/pages/footprints.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="footprints-page">
     <!-- 导航栏 -->
-    <nav class="navbar" data-scroll="true">
+    <nav class="navbar">
         <div class="nav-container">
             <a href="./index.html" class="nav-logo">
                 <img src="../assets/images/home/avatar.png" alt="logo">
                 <span>Mahongyu</span>
             </a>
+            <button class="mobile-nav-toggle" aria-label="切换菜单" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
             <div class="nav-links">
                 <a href="./index.html">首页</a>
                 <a href="./me.html">关于我</a>
@@ -29,6 +33,7 @@
             </div>
         </div>
     </nav>
+    <div class="nav-overlay"></div>
 
     <main>
         <!-- 顶部统计区域 -->
@@ -693,7 +698,9 @@
         <i class="fas fa-moon"></i>
     </button>
 
-    <script src="../js/pages/home.js"></script>
+    <!-- JavaScript -->
+    <script src="../js/components/mobile-nav.js"></script>
+    <script src="../js/components/back-to-top.js"></script>
     <script src="../js/pages/footprints.js"></script>
 </body>
 </html> 

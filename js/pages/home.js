@@ -7,27 +7,26 @@ document.addEventListener('DOMContentLoaded', () => {
         const cards = list.querySelectorAll('.image-card');
         if (!cards.length) return;
 
-        // 复制卡片实现无缝滚动
-        cards.forEach(card => {
-            list.appendChild(card.cloneNode(true));
-        });
-
         let currentPosition = 0;
         let isPaused = false;
         let animationFrameId = null;
         let lastTime = 0;
 
-        // 设置动画帧率为60fps
-        const fps = 60;
+        // 设置动画帧率为120fps
+        const fps = 120;
         const frameInterval = 1000 / fps;
 
         function animate(currentTime) {
             if (!isPaused) {
                 animationFrameId = requestAnimationFrame(animate);
                 
-                if (currentTime - lastTime >= frameInterval) {
-                    lastTime = currentTime;
-                    currentPosition -= 1;
+                if (!lastTime) lastTime = currentTime;
+                const deltaTime = currentTime - lastTime;
+
+                if (deltaTime >= frameInterval) {
+                    // 根据帧率计算每帧移动距离
+                    const pixelsPerFrame = (cards[0].offsetWidth * cards.length) / (fps * 40); // 40秒完成一次循环
+                    currentPosition -= pixelsPerFrame;
 
                     // 重置位置实现循环
                     const totalWidth = cards[0].offsetWidth * cards.length;
@@ -36,20 +35,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
 
                     list.style.transform = `translateX(${currentPosition}px)`;
+                    lastTime = currentTime;
                 }
             }
         }
 
         // 事件处理
-        cards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                isPaused = true;
-            });
+        list.addEventListener('mouseenter', () => {
+            isPaused = true;
+        });
 
-            card.addEventListener('mouseleave', () => {
-                isPaused = false;
-                animate();
-            });
+        list.addEventListener('mouseleave', () => {
+            isPaused = false;
+            lastTime = 0;
+            animate();
         });
 
         // 启动动画
@@ -344,4 +343,37 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
         console.error('初始化过程中发生错误:', error);
     }
-}); 
+});
+
+// 移动端导航菜单处理
+const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+const navLinks = document.querySelector('.nav-links');
+const navOverlay = document.querySelector('.nav-overlay');
+
+if (mobileNavToggle && navLinks && navOverlay) {
+    mobileNavToggle.addEventListener('click', () => {
+        const isExpanded = mobileNavToggle.getAttribute('aria-expanded') === 'true';
+        mobileNavToggle.setAttribute('aria-expanded', !isExpanded);
+        navLinks.classList.toggle('active');
+        navOverlay.classList.toggle('active');
+        document.body.style.overflow = isExpanded ? '' : 'hidden';
+    });
+
+    // 点击遮罩层关闭导航菜单
+    navOverlay.addEventListener('click', () => {
+        mobileNavToggle.setAttribute('aria-expanded', 'false');
+        navLinks.classList.remove('active');
+        navOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    // 点击导航链接后关闭菜单
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileNavToggle.setAttribute('aria-expanded', 'false');
+            navLinks.classList.remove('active');
+            navOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+} 

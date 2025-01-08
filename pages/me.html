@@ -10,17 +10,22 @@
     <!-- CSS 引入 -->
     <link rel="stylesheet" href="../styles/base/backgrounds.css">
     <link rel="stylesheet" href="../styles/base/common.css">
+    <link rel="stylesheet" href="../styles/components/mobile-nav.css">
     <link rel="stylesheet" href="../styles/pages/about.css">
+    <link rel="stylesheet" href="../styles/pages/me.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="about-page">
     <!-- 导航栏 -->
-    <nav class="navbar" data-scroll="true">
+    <nav class="navbar">
         <div class="nav-container">
             <a href="./index.html" class="nav-logo">
                 <img src="../assets/images/home/avatar.png" alt="logo">
                 <span>Mahongyu</span>
             </a>
+            <button class="mobile-nav-toggle" aria-label="切换菜单" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
             <div class="nav-links">
                 <a href="./index.html">首页</a>
                 <a href="./me.html" class="active">关于我</a>
@@ -30,6 +35,9 @@
             </div>
         </div>
     </nav>
+
+    <!-- 遮罩层 -->
+    <div class="nav-overlay"></div>
 
     <!-- 主要内容区域 -->
     <main>
@@ -117,7 +125,7 @@
                                 <div class="skill-name">Node.js</div>
                                 <div class="skill-level">
                                     <div class="level-bar">
-                                        <div class="level-fill" style="width: 0%"></div>
+                                        <div class="level-fill" style="width: 2%"></div>
                                     </div>
                                 </div>
                             </div>
@@ -183,7 +191,7 @@
                             </ul>
                             <div class="achievements">
                                 <span class="achievement-tag">专业前10%</span>
-                                <span class="achievement-tag">优秀学生干部</span>
+                                <span class="achievement-tag">同学的托底</span>
                             </div>
                         </div>
                     </div>
@@ -200,12 +208,12 @@
                         <div class="education-content">
                             <ul class="certification-list">
                                 <li>
-                                    <span class="cert-name">前端开发工程师认证</span>
-                                    <span class="cert-org">freeCodeCamp</span>
+                                    <span class="cert-name">以后会有的</span>
+                                    <span class="cert-org">以后会有的</span>
                                 </li>
                                 <li>
-                                    <span class="cert-name">Vue.js 开发认证</span>
-                                    <span class="cert-org">Vue Mastery</span>
+                                    <span class="cert-name">以后会有的</span>
+                                    <span class="cert-org">以后会有的</span>
                                 </li>
                             </ul>
                         </div>
@@ -222,9 +230,10 @@
                         </div>
                         <div class="education-content">
                             <ul class="workshop-list">
-                                <li>微软云计算工作坊</li>
-                                <li>阿里云开发者大会</li>
-                                <li>开源项目贡献</li>
+                                <li>上课</li>
+                                <li>自学</li>
+                                <li>很好奇前沿技术</li>
+                                <li>开源项目学习</li>
                             </ul>
                         </div>
                     </div>
@@ -244,8 +253,8 @@
                         <h3>摄影</h3>
                         <p>喜欢用镜头记录生活中的美好瞬间</p>
                         <div class="interest-gallery">
-                            <img src="../assets/images/hobby1.png" alt="摄影作品1">
-                            <img src="../assets/images/hobby2.png" alt="摄影作品2">
+                            <img src="../assets/images/me/sy1.png" alt="摄影作品1">
+                            <img src="../assets/images/me/sy2.png" alt="摄影作品2">
                         </div>
                     </div>
                     <div class="interest-card">
@@ -341,6 +350,8 @@
     </button>
 
     <!-- JavaScript -->
-    <script src="../js/pages/home.js"></script>
+    <script src="../js/components/mobile-nav.js"></script>
+    <script src="../js/components/back-to-top.js"></script>
+    <script src="../js/pages/me.js"></script>
 </body>
 </html>

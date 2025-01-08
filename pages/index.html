@@ -14,19 +14,23 @@
     <!-- 只保留图标字体 -->
     <link rel="stylesheet" href="../styles/base/backgrounds.css">
     <link rel="stylesheet" href="../styles/base/common.css">
+    <link rel="stylesheet" href="../styles/components/mobile-nav.css">
     <link rel="stylesheet" href="../styles/pages/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="home-page">
     <!-- 导航栏移到这里，body 开始位置 -->
-    <nav class="navbar" data-scroll="true">
+    <nav class="navbar">
         <div class="nav-container">
             <a href="./index.html" class="nav-logo">
                 <img src="../assets/images/home/avatar.png" alt="logo">
                 <span>Mahongyu</span>
             </a>
+            <button class="mobile-nav-toggle" aria-label="切换菜单" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
             <div class="nav-links">
-                <a href="./" class="active">首页</a>
+                <a href="./index.html">首页</a>
                 <a href="./me.html">关于我</a>
                 <a href="./my_project.html">项目</a>
                 <a href="./my_works.html">作品</a>
@@ -35,116 +39,127 @@
         </div>
     </nav>
 
+    <!-- 在导航栏附近添加遮罩层 -->
+    <div class="nav-overlay"></div>
+
     <!-- 首页 -->
     <section id="home">
         <div class="photo-wall"></div>
-        <div class="profile-container">
+    </section>
+
+    <!-- 新增独立的个人简介section -->
+    <section id="profile">
+        <div class="section-container">
             <div class="profile-wrapper">
-                <!-- 个人信息 -->
-                <div class="profile-photo-container animate-fade-in">
+                <div class="profile-photo-container">
                     <img src="../assets/images/home/avatar.png" alt="个人照片" class="profile-photo">
-                    <div class="profile-info animate-fade-up delay-1">
+                    <div class="profile-info">
                         <h1>Mahongyu</h1>
                         <div class="profile-details">
-                            <p class="tagline">「一句简短的个人签名」</p>
+                            <p class="tagline">Mahongyu会成为优秀的人的</p>
                             <p class="motto">个人信条：永远保持学习的热情</p>
-                            <p class="quote">最爱的一句话：生活不止眼前的苟且，还有诗和远方</p>
+                            <p class="quote">最爱的一句话：Mahongyu一定会成为优秀的人的</p>
                         </div>
                     </div>
                 </div>
-                <!-- 轮播图 -->
-                <div class="carousel-container">
-                    <div class="animated-list">
-                        <div class="carousel-item">
-                            <figure class="image-card">
-                                <img src="../assets/images/home/lb1.png" alt="项目展示1">
-                                <figcaption>
-                                    <h3>项目标题 1</h3>
-                                    <p>项目描述</p>
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="carousel-item">
-                            <figure class="image-card">
-                                <img src="../assets/images/home/lb2.png" alt="项目展示2">
-                                <figcaption>
-                                    <h3>项目标题 2</h3>
-                                    <p>项目描述</p>
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="carousel-item">
-                            <figure class="image-card">
-                                <img src="../assets/images/home/lb3.png" alt="项目展示3">
-                                <figcaption>
-                                    <h3>项目标题 3</h3>
-                                    <p>项目描述</p>
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="carousel-item">
-                            <figure class="image-card">
-                                <img src="../assets/images/home/lb4.png" alt="项目展示4">
-                                <figcaption>
-                                    <h3>项目标题 4</h3>
-                                    <p>项目描述</p>
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="carousel-item">
-                            <figure class="image-card">
-                                <img src="../assets/images/home/lb5.png" alt="项目展示5">
-                                <figcaption>
-                                    <h3>项目标题 5</h3>
-                                    <p>项目描述</p>
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="carousel-item">
-                            <figure class="image-card">
-                                <img src="../assets/images/home/lb1.png" alt="项目展示1">
-                                <figcaption>
-                                    <h3>项目标题 1</h3>
-                                    <p>项目描述</p>
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="carousel-item">
-                            <figure class="image-card">
-                                <img src="../assets/images/home/lb2.png" alt="项目展示2">
-                                <figcaption>
-                                    <h3>项目标题 2</h3>
-                                    <p>项目描述</p>
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="carousel-item">
-                            <figure class="image-card">
-                                <img src="../assets/images/home/lb3.png" alt="项目展示3">
-                                <figcaption>
-                                    <h3>项目标题 3</h3>
-                                    <p>项目描述</p>
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="carousel-item">
-                            <figure class="image-card">
-                                <img src="../assets/images/home/lb4.png" alt="项目展示4">
-                                <figcaption>
-                                    <h3>项目标题 4</h3>
-                                    <p>项目描述</p>
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="carousel-item">
-                            <figure class="image-card">
-                                <img src="../assets/images/home/lb5.png" alt="项目展示5">
-                                <figcaption>
-                                    <h3>项目标题 5</h3>
-                                    <p>项目描述</p>
-                                </figcaption>
-                            </figure>
-                        </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 轮播图 -->
+    <section id="carousel">
+        <div class="section-container">
+            <div class="carousel-container">
+                <div class="animated-list">
+                    <div class="carousel-item">
+                        <figure class="image-card">
+                            <img src="../assets/images/home/lb1.png" alt="项目展示1">
+                            <figcaption>
+                                <h3>猫猫 1</h3>
+                                <p>猫猫描述：黑猫</p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="carousel-item">
+                        <figure class="image-card">
+                            <img src="../assets/images/home/lb2.png" alt="项目展示2">
+                            <figcaption>
+                                <h3>猫猫 2</h3>
+                                <p>猫猫描述：肥猫</p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="carousel-item">
+                        <figure class="image-card">
+                            <img src="../assets/images/home/lb3.png" alt="项目展示3">
+                            <figcaption>
+                                <h3>猫猫 3</h3>
+                                <p>猫猫描述：好多猫猫</p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="carousel-item">
+                        <figure class="image-card">
+                            <img src="../assets/images/home/lb4.png" alt="项目展示4">
+                            <figcaption>
+                                <h3>猫猫 4</h3>
+                                <p>猫猫描述：花猫</p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="carousel-item">
+                        <figure class="image-card">
+                            <img src="../assets/images/home/lb5.png" alt="项目展示5">
+                            <figcaption>
+                                <h3>猫猫 5</h3>
+                                <p>猫猫描述：好丑的猫</p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="carousel-item">
+                        <figure class="image-card">
+                            <img src="../assets/images/home/lb1.png" alt="项目展示1">
+                            <figcaption>
+                                <h3>猫猫 1</h3>
+                                <p>猫猫描述：黑猫</p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="carousel-item">
+                        <figure class="image-card">
+                            <img src="../assets/images/home/lb2.png" alt="项目展示2">
+                            <figcaption>
+                                <h3>猫猫 2</h3>
+                                <p>猫猫描述：肥猫</p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="carousel-item">
+                        <figure class="image-card">
+                            <img src="../assets/images/home/lb3.png" alt="项目展示3">
+                            <figcaption>
+                                <h3>猫猫 3</h3>
+                                <p>猫猫描述：好多猫猫</p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="carousel-item">
+                        <figure class="image-card">
+                            <img src="../assets/images/home/lb4.png" alt="项目展示4">
+                            <figcaption>
+                                <h3>猫猫 4</h3>
+                                <p>猫猫描述：花猫</p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="carousel-item">
+                        <figure class="image-card">
+                            <img src="../assets/images/home/lb5.png" alt="项目展示5">
+                            <figcaption>
+                                <h3>猫猫 5</h3>
+                                <p>猫猫描述：好丑的猫</p>
+                            </figcaption>
+                        </figure>
                     </div>
                 </div>
             </div>
@@ -263,14 +278,14 @@
                 <div class="footprint-card" data-animation="fade-up">
                     <div class="footprint-image">
                         <img src="../assets/images/footprints/bms.png" alt="地点描述" loading="lazy">
-                        <div class="footprint-date">2024年12月</div>
+                        <div class="footprint-date">2025年1月</div>
                     </div>
                     <div class="footprint-info">
                         <div class="footprint-location">
                             <i class="fas fa-map-marker-alt"></i>
                             <span>洛阳</span>
                         </div>
-                        <p class="footprint-desc">这里记录了一些有的  历和感受...</p>
+                        <p class="footprint-desc">这里记录了一些有的经历和感受...</p>
                         <div class="footprint-tags">
                             <span class="tag">旅行</span>
                             <span class="tag">摄影</span>
@@ -281,16 +296,16 @@
                 <div class="footprint-card" data-animation="fade-up">
                     <div class="footprint-image">
                         <img src="../assets/images/footprints/lmsk.png" alt="地点描述" loading="lazy">
-                        <div class="footprint-date">2024年2月</div>
+                        <div class="footprint-date">2025年1月</div>
                     </div>
                     <div class="footprint-info">
                         <div class="footprint-location">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>另一个地点</span>
+                            <span>龙门石窟</span>
                         </div>
                         <p class="footprint-desc">在这里遇到了很多有趣的人事...</p>
                         <div class="footprint-tags">
-                            <span class="tag">美食</span>
+                            <span class="tag">雕塑</span>
                             <span class="tag">文化</span>
                         </div>
                     </div>
